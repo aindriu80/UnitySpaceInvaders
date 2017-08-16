@@ -5,6 +5,7 @@ public class PlayerCharacter : MonoBehaviour
 
     public float movementSpeed;
 
+    public MapLimits Limits;
     // Use this for initialization
     void Start()
     {
@@ -15,6 +16,8 @@ public class PlayerCharacter : MonoBehaviour
     void Update()
     {
         Movement();
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, Limits.minimumX, Limits.maximumX),
+                                         Mathf.Clamp(transform.position.y, Limits.minimumY, Limits.maximumY), 0.0f);
 
     }
 
@@ -41,3 +44,5 @@ public class PlayerCharacter : MonoBehaviour
         }
     }
 }
+
+
