@@ -91,5 +91,25 @@ public class PlayerCharacter : MonoBehaviour
                     break;
             }
         }
+
     }
+
+
+    private void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "powerUp")
+        {
+            if (power < 3)
+                power++;
+            Destroy(col.gameObject);
+        }
+        if (col.gameObject.tag == "powerDown")
+        {
+            if (power > 1)
+                power--;
+            Destroy(col.gameObject);
+        }
+    }
+
+
 }
