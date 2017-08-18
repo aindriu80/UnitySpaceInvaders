@@ -12,13 +12,17 @@ public class PlayerCharacter : MonoBehaviour
     public Transform posL;
 
     public Transform posR;
+    public AudioClip shotSound;
     private int power;
     public float shotPower;
+    private AudioSource audioS;
+
 
     // Use this for initialization
     private void Start()
     {
         power = 1;
+        audioS = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -48,6 +52,8 @@ public class PlayerCharacter : MonoBehaviour
     private void Shooting()
     {
         if (Input.GetKeyDown(KeyCode.Space))
+        {
+            audioS.PlayOneShot(shotSound);
             switch (power)
             {
                 case 1:
@@ -84,5 +90,6 @@ public class PlayerCharacter : MonoBehaviour
                     }
                     break;
             }
+        }
     }
 }
