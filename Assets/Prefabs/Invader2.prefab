@@ -134,7 +134,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1580612393007982}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 18.127247, y: 10.130659, z: 18.754765}
@@ -150,5 +150,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c137ed2bd8fbbe4e8fb4f8dcb912209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
   changeTimer: 0
+  particleEffect: {fileID: 1021378622986688, guid: c34be3ef499991a4e95a5c9a72c6e718,
+    type: 2}
+  directionSwitch: 0
+  speed: 0
+  hitPoints: 3

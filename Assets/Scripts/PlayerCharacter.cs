@@ -2,21 +2,17 @@
 
 public class PlayerCharacter : MonoBehaviour
 {
+    private AudioSource audioS;
     public GameObject bullet;
-
+    public float healthPoint;
     public MapLimits Limits;
     public float movementSpeed;
-
     public Transform pos1;
-
     public Transform posL;
-
     public Transform posR;
-    public AudioClip shotSound;
     private int power;
     public float shotPower;
-    private AudioSource audioS;
-
+    public AudioClip shotSound;
 
     // Use this for initialization
     private void Start()
@@ -28,6 +24,8 @@ public class PlayerCharacter : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (healthPoint <= 0)
+            Destroy(gameObject);
         Movement();
         Shooting();
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, Limits.minimumX, Limits.maximumX),
@@ -91,9 +89,7 @@ public class PlayerCharacter : MonoBehaviour
                     break;
             }
         }
-
     }
-
 
     private void OnTriggerEnter(Collider col)
     {
@@ -110,6 +106,4 @@ public class PlayerCharacter : MonoBehaviour
             Destroy(col.gameObject);
         }
     }
-
-
 }
