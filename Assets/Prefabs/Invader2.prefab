@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 65459038706748232}
   - component: {fileID: 54732425993414840}
   - component: {fileID: 114434933221353150}
+  - component: {fileID: 114705647703865696}
   m_Layer: 0
   m_Name: Invader2
   m_TagString: Untagged
@@ -156,3 +157,21 @@ MonoBehaviour:
   directionSwitch: 0
   speed: 0
   hitPoints: 3
+  Limits:
+    minimumX: -18
+    maximumX: 18
+    minimumY: -20
+    maximumY: 20
+--- !u!114 &114705647703865696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1580612393007982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6782122183ce44facbd9c2100897a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 5
+  particle: {fileID: 0}

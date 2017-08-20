@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
     private float maxTimer;
     public float speed;
     public int hitPoints;
+    public MapLimits Limits;
 
     private Rigidbody rig;
 
@@ -24,6 +25,8 @@ public class EnemyController : MonoBehaviour
     {
         switchTimer();
         Movement();
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, Limits.minimumX, Limits.maximumX),
+            Mathf.Clamp(transform.position.y, Limits.minimumY, Limits.maximumY), 0.0f);
     }
 
     private void Movement()
