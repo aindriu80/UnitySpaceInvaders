@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         SpawnEnemy();
-        spawnTimer = maxSpawnTimer;
+        maxSpawnTimer = spawnTimer;
     }
 
     // Update is called once per frame
@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        var randomNumber = Random.Range(0, 2);
+        var randomNumber = Random.Range(0, 3);
         switch (randomNumber)
         {
             case 0:

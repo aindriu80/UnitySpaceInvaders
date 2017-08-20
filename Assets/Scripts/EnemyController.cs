@@ -2,22 +2,28 @@
 
 public class EnemyController : MonoBehaviour
 {
+    public GameObject bullet;
+    public bool canShoot;
     public float changeTimer;
-    public GameObject particleEffect;
     public bool directionSwitch;
-    private float maxTimer;
-    public float speed;
     public int hitPoints;
     public MapLimits Limits;
-
+    private float maxShootTimer;
+    private float maxTimer;
+    public GameObject particleEffect;
     private Rigidbody rig;
+    public Transform shootingPosition;
+    public float shootPower;
+    private float shootTimer;
+    public float speed;
 
     // Use this for initialization
     private void Start()
     {
+        shootTimer = Random.Range(1f, 5f);
+        maxShootTimer = shootTimer;
         maxTimer = changeTimer;
         rig = GetComponent<Rigidbody>();
-        
     }
 
     // Update is called once per frame
@@ -29,6 +35,14 @@ public class EnemyController : MonoBehaviour
         if (transform.position.x == Limits.minimumX) switchDir(directionSwitch);
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, Limits.minimumX, Limits.maximumX),
             Mathf.Clamp(transform.position.y, Limits.minimumY, Limits.maximumY), 0.0f);
+        shootTimer -= Time.deltaTime;
+        if (canShoot)
+            if (shootTimer <= 0)
+            {
+                var newBullet = Instantiate(bullet, shootingPosition.transform.position, transform.rotation);
+                newBullet.GetComponent<Rigidbody>().velocity = Vector3.up * -shootPower;
+                shootTimer = maxShootTimer;
+            }
     }
 
     private void Movement()
@@ -51,12 +65,14 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
+        if (col.gameObject.tag == "enemyBullet")
+            return;
         if (col.gameObject.tag == "friendlyBullet")
         {
             Destroy(col.gameObject);
             Instantiate(particleEffect, transform.position, transform.rotation);
             hitPoints--;
-            if(hitPoints<=0)
+            if (hitPoints <= 0)
                 Destroy(gameObject);
         }
         if (col.gameObject.tag == "Player")
@@ -64,7 +80,7 @@ public class EnemyController : MonoBehaviour
             col.gameObject.GetComponent<PlayerCharacter>().healthPoint--;
             Instantiate(particleEffect, transform.position, transform.rotation);
             hitPoints--;
-            if(hitPoints <=0)
+            if (hitPoints <= 0)
                 Destroy(gameObject);
         }
     }

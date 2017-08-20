@@ -156,12 +156,16 @@ MonoBehaviour:
     type: 2}
   directionSwitch: 0
   speed: 600
-  hitPoints: 3
+  hitPoints: 2
+  canShoot: 0
+  shootingPosition: {fileID: 0}
+  bullet: {fileID: 0}
   Limits:
     minimumX: -26
     maximumX: 26
     minimumY: -20
     maximumY: 20
+  shootPower: 0
 --- !u!114 &114705647703865696
 MonoBehaviour:
   m_ObjectHideFlags: 1
