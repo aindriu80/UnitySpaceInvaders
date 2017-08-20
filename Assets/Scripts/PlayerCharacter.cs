@@ -1,16 +1,20 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCharacter : MonoBehaviour
 {
     private AudioSource audioS;
     public GameObject bullet;
     public float healthPoint;
+    private int highScore;
     public MapLimits Limits;
     public float movementSpeed;
     public Transform pos1;
     public Transform posL;
     public Transform posR;
     private int power;
+    public int score;
+    public Text scoreText;
     public float shotPower;
     public AudioClip shotSound;
 
@@ -19,11 +23,22 @@ public class PlayerCharacter : MonoBehaviour
     {
         power = 1;
         audioS = GetComponent<AudioSource>();
+        if (PlayerPrefs.HasKey("highscore"))
+        {
+            highScore = 0;
+            PlayerPrefs.SetInt("highscore", highScore);
+        }
     }
 
     // Update is called once per frame
     private void Update()
     {
+        scoreText.text = score.ToString();
+        if (score > highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt("highscore", highScore);
+        }
         if (healthPoint <= 0)
             Destroy(gameObject);
         Movement();

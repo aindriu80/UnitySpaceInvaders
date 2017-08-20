@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
     public float changeTimer;
     public bool directionSwitch;
     public int hitPoints;
+    public int scoreReward;
     public MapLimits Limits;
     private float maxShootTimer;
     private float maxTimer;
@@ -16,6 +17,7 @@ public class EnemyController : MonoBehaviour
     public float shootPower;
     private float shootTimer;
     public float speed;
+
 
     // Use this for initialization
     private void Start()
@@ -73,7 +75,10 @@ public class EnemyController : MonoBehaviour
             Instantiate(particleEffect, transform.position, transform.rotation);
             hitPoints--;
             if (hitPoints <= 0)
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCharacter>().score += scoreReward;
                 Destroy(gameObject);
+            }
         }
         if (col.gameObject.tag == "Player")
         {
@@ -81,7 +86,10 @@ public class EnemyController : MonoBehaviour
             Instantiate(particleEffect, transform.position, transform.rotation);
             hitPoints--;
             if (hitPoints <= 0)
+            {
+                col.gameObject.GetComponent<PlayerCharacter>().score += scoreReward;
                 Destroy(gameObject);
+            }
         }
     }
 
@@ -91,4 +99,6 @@ public class EnemyController : MonoBehaviour
         else directionSwitch = true;
         return directionSwitch;
     }
+
+    
 }
