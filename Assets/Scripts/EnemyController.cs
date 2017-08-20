@@ -12,6 +12,8 @@ public class EnemyController : MonoBehaviour
     private float maxShootTimer;
     private float maxTimer;
     public GameObject particleEffect;
+    public GameObject powerUp;
+    public GameObject powerDown;
     private Rigidbody rig;
     public Transform shootingPosition;
     public float shootPower;
@@ -76,6 +78,9 @@ public class EnemyController : MonoBehaviour
             hitPoints--;
             if (hitPoints <= 0)
             {
+                int randomNumber = Random.Range(0, 100);
+                if (randomNumber < 30) Instantiate(powerUp, transform.position, powerUp.transform.rotation);
+                if (randomNumber > 80) Instantiate(powerDown, transform.position, powerDown.transform.rotation);
                 GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCharacter>().score += scoreReward;
                 Destroy(gameObject);
             }

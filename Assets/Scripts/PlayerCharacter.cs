@@ -15,6 +15,7 @@ public class PlayerCharacter : MonoBehaviour
     private int power;
     public int score;
     public Text scoreText;
+    public Text highScoreText;
     public float shotPower;
     public AudioClip shotSound;
 
@@ -34,6 +35,7 @@ public class PlayerCharacter : MonoBehaviour
     private void Update()
     {
         scoreText.text = score.ToString();
+        highScoreText.text = PlayerPrefs.GetInt("highscore").ToString();
         if (score > highScore)
         {
             highScore = score;
