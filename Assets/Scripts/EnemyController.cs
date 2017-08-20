@@ -25,6 +25,8 @@ public class EnemyController : MonoBehaviour
     {
         switchTimer();
         Movement();
+        if (transform.position.x == Limits.maximumX) switchDir(directionSwitch);
+        if (transform.position.x == Limits.minimumX) switchDir(directionSwitch);
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, Limits.minimumX, Limits.maximumX),
             Mathf.Clamp(transform.position.y, Limits.minimumY, Limits.maximumY), 0.0f);
     }
@@ -42,8 +44,7 @@ public class EnemyController : MonoBehaviour
         changeTimer -= Time.deltaTime;
         if (changeTimer < 0)
         {
-            if (directionSwitch) directionSwitch = false;
-            else directionSwitch = true;
+            switchDir(directionSwitch);
             changeTimer = maxTimer;
         }
     }
@@ -66,5 +67,12 @@ public class EnemyController : MonoBehaviour
             if(hitPoints <=0)
                 Destroy(gameObject);
         }
+    }
+
+    private bool switchDir(bool dir)
+    {
+        if (dir) directionSwitch = false;
+        else directionSwitch = true;
+        return directionSwitch;
     }
 }
