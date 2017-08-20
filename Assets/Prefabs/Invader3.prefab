@@ -151,15 +151,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c137ed2bd8fbbe4e8fb4f8dcb912209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTimer: 0
+  changeTimer: 4
   particleEffect: {fileID: 1021378622986688, guid: c34be3ef499991a4e95a5c9a72c6e718,
     type: 2}
   directionSwitch: 0
-  speed: 0
+  speed: 200
   hitPoints: 5
   Limits:
-    minimumX: -18
-    maximumX: 18
+    minimumX: -26
+    maximumX: 26
     minimumY: -20
     maximumY: 20
 --- !u!114 &114356676741368106

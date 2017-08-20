@@ -168,7 +168,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 11
+  orthographic size: 16
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -407,7 +407,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400002, guid: ed68cc62351a66b4cb326f24ce9a43b2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -26.31
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: ed68cc62351a66b4cb326f24ce9a43b2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -565,14 +565,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3caac1cc03efed49a7ca715aa07be97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy1: {fileID: 1970996952077292, guid: 49b7a0b0b729f024fbbcb8c7876c1002, type: 2}
+  enemy2: {fileID: 1580612393007982, guid: ef35c6cffbcedfe4798f2c786b6c2d93, type: 2}
+  enemy3: {fileID: 1684476627871146, guid: 35eeeca8ef30a7947bd47d56b4e0c06c, type: 2}
   Limits:
     minimumX: -15
     maximumX: 15
     minimumY: 20
     maximumY: 19
-  enemy1: {fileID: 1970996952077292, guid: 49b7a0b0b729f024fbbcb8c7876c1002, type: 2}
-  enemy2: {fileID: 1580612393007982, guid: ef35c6cffbcedfe4798f2c786b6c2d93, type: 2}
-  enemy3: {fileID: 1684476627871146, guid: 35eeeca8ef30a7947bd47d56b4e0c06c, type: 2}
+  spawnTimer: 3
 --- !u!1 &2063852130 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100002, guid: ed68cc62351a66b4cb326f24ce9a43b2, type: 3}
@@ -595,8 +596,8 @@ MonoBehaviour:
   bullet: {fileID: 1750160213468326, guid: 7a0e9102cc7938b4b97afd97c4b66768, type: 2}
   healthPoint: 1
   Limits:
-    minimumX: -18
-    maximumX: 18
+    minimumX: -26
+    maximumX: 26
     minimumY: -10
     maximumY: 9
   movementSpeed: 20

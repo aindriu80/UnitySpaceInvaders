@@ -171,7 +171,7 @@ MonoBehaviour:
   speed: 500
   hitPoints: 1
   Limits:
-    minimumX: -18
-    maximumX: 18
+    minimumX: -26
+    maximumX: 26
     minimumY: -20
     maximumY: 20
